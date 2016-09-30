@@ -106,7 +106,7 @@ public abstract class ManagedStateRunnable implements Runnable {
         }
     }
 
-    private synchronized void setState( State newState ) {
+    public synchronized void setState( State newState ) {
         if( this.currentState != null ) {
             if( this.currentState.equals( newState ) ) {
                 return;
