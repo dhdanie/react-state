@@ -98,13 +98,17 @@ public abstract class ManagedStateRunnable implements Runnable {
             if( this.currentState.equals( beforeState ) ) {
                 resumeStateChanged = true;
                 try {
-                    this.wait();
+                    this.doWait();
                 } catch( InterruptedException e ) {
                     resumeStateChanged = false;
                 }
             }
         }
     }
+
+	private synchronized void doWait() throws InterruptedException {
+		this.wait();
+	}
 
     public synchronized void setState( State newState ) {
         if( this.currentState != null ) {
