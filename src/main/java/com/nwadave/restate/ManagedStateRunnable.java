@@ -136,8 +136,10 @@ public abstract class ManagedStateRunnable implements Runnable {
     }
 
     private void processObservers( State oldState, State newState ) {
-        for( StateObserver observer : this.observers ) {
-            this.processObserver( observer, oldState, newState );
+        if( this.observers != null ) {
+            for( StateObserver observer : this.observers ) {
+                this.processObserver(observer, oldState, newState);
+            }
         }
     }
 
