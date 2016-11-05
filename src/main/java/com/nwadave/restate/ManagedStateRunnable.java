@@ -19,7 +19,12 @@ public abstract class ManagedStateRunnable implements Runnable {
     private Map<Integer,StateProcessor> stateProcessors;
     private List<StateObserver>         observers;
 
-    public ManagedStateRunnable addState( State state, boolean isInitial, boolean isTerminal ) {
+
+    public State getCurrentState() {
+        return currentState;
+    }
+
+    public ManagedStateRunnable addState(State state, boolean isInitial, boolean isTerminal ) {
         this.states.put( state.getId(), state );
         if( isInitial ) {
             this.initialState = state;
